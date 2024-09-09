@@ -18,7 +18,7 @@ export function CpuCoresChart({ cpuCoresUsage }: { cpuCoresUsage: number[] }) {
   }));
 
   return (
-    <Card>
+    <Card className="mb-4">
       <CardHeader>
         <CardTitle>CPU Usage per Core</CardTitle>
         <CardDescription>Real-time CPU utilization for each core</CardDescription>

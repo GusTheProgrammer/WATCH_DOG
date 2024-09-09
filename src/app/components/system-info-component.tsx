@@ -6,9 +6,11 @@ import { CpuUsageChart } from "./cpu-usage-chart";
 import { CpuCoresChart } from "./cpu-cores-chart";
 import { MemoryUsageChart } from "./memory-usage-chart";
 import { DiskUsageCard } from "./disk-usage-chart";
+import NetworkDataTable from "./network-data-table";
+import ProcessTable from "./process-data-table";
 
 export default function SystemInfoComponent() {
-  const [data, setData] = useState({ cpu: [], overall_cpu: 0, ram: [0, 0], disk: [] });
+  const [data, setData] = useState({ cpu: [], overall_cpu: 0, ram: [0, 0], disk: [], network: [], processes: [] });
 
   useEffect(() => {
     invoke("start_websocket_server")
@@ -33,12 +35,12 @@ export default function SystemInfoComponent() {
   return (
     <div className="p-4 bg-gray-100 dark:bg-gray-800 rounded-lg shadow-md">
       <h1 className="text-2xl font-bold text-gray-900 dark:text-gray-100 mb-4">System Usage</h1>
-
+{console.log(data)}
       <div className="flex flex-wrap gap-4 mb-4">
         <div className="flex-1 min-w-[300px]">
           <CpuUsageChart overallCpuUsage={data.overall_cpu} />
         </div>
-        
+
         <div className="flex-1 min-w-[300px]">
           <MemoryUsageChart usedRam={data.ram[0]} totalRam={data.ram[1]} />
         </div>
@@ -52,6 +54,11 @@ export default function SystemInfoComponent() {
           <CpuCoresChart cpuCoresUsage={data.cpu} />
         </div>
       </div>
+
+      <NetworkDataTable networkData={data.network} />
+
+      <ProcessTable processes={data.processes} />
+
 
 
 

@@ -5,6 +5,8 @@ mod cpu;
 mod ram;
 mod disk;
 mod ws_handler;
+mod network;
+mod process;
 
 #[tauri::command]
 fn greet(name: &str) -> String {

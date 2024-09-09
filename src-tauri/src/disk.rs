@@ -1,9 +1,7 @@
 use sysinfo::Disks; 
 
 // Function to fetch disk usage information
-pub fn fetch_disk_usage() -> Vec<(String, u64, u64, String, String, String)> {
-    // Create a new Disks object and refresh the list of disks
-    let mut disks = Disks::new_with_refreshed_list();
+pub fn fetch_disk_usage(disks: &mut Disks) -> Vec<(String, u64, u64, String, String, String)> {
     disks.refresh_list(); // Recompute the disk list to make sure we have the latest information
 
     // Collect the disk information: name, total space, and available space

@@ -1,8 +1,7 @@
-use sysinfo::{System, RefreshKind, CpuRefreshKind};
+use sysinfo::System;
 use tokio::time::Interval;
 
-pub async fn fetch_cpu_usage(interval: &mut Interval) -> (f32, Vec<f32>) {
-    let mut sys = System::new_with_specifics(RefreshKind::new().with_cpu(CpuRefreshKind::everything()));
+pub async fn fetch_cpu_usage(interval: &mut Interval, sys: &mut System) -> (f32, Vec<f32>) {
 
     // Wait for the interval to tick
     interval.tick().await;
