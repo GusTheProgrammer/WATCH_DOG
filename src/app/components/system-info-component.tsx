@@ -29,10 +29,10 @@ export default function SystemInfoComponent({ data }) {
           <CpuCoresChart cpuCoresUsage={data.cpu} />
         </div>
       </div>
-{/* 
+
       <NetworkDataTable networkData={data.network} />
 
-      <ProcessTable processes={data.processes} /> */}
+      <ProcessTable processes={data.processes} />
     </div>
   );
 }
